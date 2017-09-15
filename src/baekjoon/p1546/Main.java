@@ -1,4 +1,4 @@
-package baekjoon.level1;
+package baekjoon.p1546;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
