@@ -1,23 +1,20 @@
 package baekjoon.contest.cpc.f;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Main {
-	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		
-		int n = Integer.parseInt(br.readLine());
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
+
 		long sum = 0;
 		for (int i = 0; i < n; i++) {
-			int c = br.read()-48;
-			br.read();
-			int k = br.read()-48;
-			br.readLine();
-			sum += c * k * (int)Math.pow(2, k-1);
+			int c = scanner.nextInt();
+			int k = scanner.nextInt();
+			sum += (c * k) * ((long) Math.pow(2, k - 1) % (Math.pow(10, 9) + 7));
 		}
-		int result = (int)sum%((int)Math.pow(10, 9)+7);
-		System.out.print(result);
+		long result = sum%((long)Math.pow(10, 9) + 7);
+		System.out.println(result);
 	}
 }

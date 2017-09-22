@@ -33,7 +33,7 @@ public class Main {
 			if (x[i] < 10) {
 				result = y[i] + "0" + x[i];
 			} else {
-				result = String.valueOf(y[i] + x[i]);
+				result = String.valueOf(y[i]) + x[i];
 			}
 			System.out.println(result);
 		}
