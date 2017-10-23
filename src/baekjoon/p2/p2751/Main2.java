@@ -3,21 +3,20 @@ package baekjoon.p2.p2751;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main2 {
 	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws IOException {
 		int n = Integer.parseInt(br.readLine());
-		int[] arr = new int[2000001];
+		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
-			int r = Integer.parseInt(br.readLine());
-			arr[r + 1000000] = 1;
+			arr[i] = Integer.parseInt(br.readLine());
 		}
+		Arrays.sort(arr);
 		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] == 1) {
-				System.out.println(i-1000000);
-			}
+			System.out.println(arr[i]);
 		}
 	}
 }
