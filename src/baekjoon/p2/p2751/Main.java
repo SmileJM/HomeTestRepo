@@ -1,58 +1,68 @@
 package baekjoon.p2.p2751;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	private static void mergeSort(int[] arr, int left, int right) {
+	private static void mergeSort(List<Integer> list, int left, int right) {
 		int mid = 0;
 		if (left < right) {
-
 			mid = (left + right) / 2;
-			mergeSort(arr, left, mid);
-			mergeSort(arr, mid + 1, right);
-			merge(arr, left, mid, right);
+			mergeSort(list, left, mid);
+			mergeSort(list, mid + 1, right);
+			merge(list, left, mid, right);
 		}
 	}
 
-	private static void merge(int[] arr, int left, int mid, int right) {
-		int[] result = new int[arr.length];
+	private static void merge(List<Integer> list, int left, int mid, int right) {
+		List<Integer> result =  new LinkedList<>();
+		
 		int i = 0;
 		int l = left;
 		int m = mid + 1;
 
 		while (l < m && m <= right) {
-			if (arr[l] < arr[m]) {
-				result[i++] = arr[l++];
+			if (list.get(l) < list.get(m)){
+				result.add(i++, list.get(l++));
 			} else {
-				result[i++] = arr[m++];
+				result.add(i++, list.get(m++));
 			}
 		}
 		while (l <= mid) {
-			result[i++] = arr[l++];
+			result.add(i++, list.get(l++));
 		}
 		while (m <= right) {
-			result[i++] = arr[m++];
+			result.add(i++, list.get(m++));
 		}
 
 		i = 0;
 		while (left <= right) {
-			arr[left++] = result[i++];
+			list.set(left++, result.get(i++));		
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
 		int n = Integer.parseInt(br.readLine());
-		int[] arr = new int[n];
+		List<Integer> list = new LinkedList<>();
+
 		for (int i = 0; i < n; i++) {
-			arr[i] = Integer.parseInt(br.readLine());
+			list.add(Integer.parseInt(br.readLine()));
 		}
-		mergeSort(arr, 0, n - 1);
+		mergeSort(list, 0, n - 1);
+		
+		PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		for (int i = 0; i < n; i++) {
-			System.out.println(arr[i]);
+			pw.println(list.get(i));
 		}
+		pw.flush();
+		pw.close();
 	}
 }
