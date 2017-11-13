@@ -1,2 +1,2 @@
-# HomeTestRepo
-Test
+# JavaStudyRepository
+Algorithm Example
