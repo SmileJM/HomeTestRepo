@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
 /*
  * 입력
  * 첫째 줄에 테스트 케이스의 개수 T가 주어진다. 
@@ -23,6 +24,22 @@ public class Main {
 		
 		int[] arr = new int[t];
 		
+		boolean[] primeArr = new boolean[10001];				
+		primeArr[1] = primeArr[2] = true;
+		
+		for(int i=2; i<primeArr.length; i++) {
+			boolean result = true;
+			for(int m=2; m<=Math.sqrt(i); m++) {
+				if((i)%m == 0) {
+					result = false;
+					break;
+				}
+			}
+			if(result) {
+				primeArr[i] = true;
+			}
+		}
+		
 		for(int i=0; i<t; i++) {
 			arr[i] = Integer.parseInt(br.readLine());
 		}
@@ -31,22 +48,8 @@ public class Main {
 		
 		for(int i=0; i<t; i++) {
 			int n = arr[i]/2;
-			for(int k=0; k<n; k++) {
-				boolean primeResult1 = true;
-				boolean primeResult2 = true;
-				for(int m=2; m<n+k; m++) {
-					if((n+k)%m == 0) {
-						primeResult1 = false;
-						break;
-					}
-				}
-				for(int m=2; m<n-k; m++) {
-					if((n-k)%m == 0) {
-						primeResult2 = false;
-						break;
-					}
-				}
-				if(primeResult1 && primeResult2) {
+			for(int k=0; k<n; k++) {				
+				if(primeArr[n-k] && primeArr[n+k]) {
 					out.println((n-k) + " " + (n+k));					
 					break;
 				}
