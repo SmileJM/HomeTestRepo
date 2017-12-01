@@ -56,6 +56,7 @@ public class Main {
 		out.flush();
 		out.close();
 	}
+	
 	private static int top() {
 		if(stack.empty()) {
 			result = -1;
@@ -64,6 +65,7 @@ public class Main {
 		}
 		return result;		
 	}
+	
 	private static int pop() {
 		result = top();
 		if(!stack.empty()) {
@@ -71,6 +73,7 @@ public class Main {
 		}		
 		return result;
 	}
+	
 	private static void push(int num) {
 		stack.push(num);		
 	}
