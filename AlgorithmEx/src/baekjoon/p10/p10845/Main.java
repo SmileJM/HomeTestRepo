@@ -54,6 +54,7 @@ public class Main {
 		out.flush();
 		out.close();
 	}
+	
 	private static int pop() {		
 		int q = -1;
 		if(!queue.isEmpty()) {
